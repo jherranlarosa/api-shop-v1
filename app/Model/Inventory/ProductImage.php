@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Inventory;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property boolean $status
  * @property string $created_at
- * @property string $uptadet_at
+ * @property string $updated_at
  * @property Product $product
  */
 class ProductImage extends Model
@@ -26,7 +26,7 @@ class ProductImage extends Model
     /**
      * @var array
      */
-    protected $fillable = ['productId', 'name', 'description', 'status', 'created_at', 'uptadet_at'];
+    protected $fillable = ['productId', 'name', 'description', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Inventory;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property int $unitId
  * @property string $name
  * @property string $description
  * @property boolean $status
  * @property string $created_at
- * @property string $uptadet_at
- * @property ProductUnit $productUnit
+ * @property string $updated_at
  * @property Product[] $products
  */
 class ProductCategory extends Model
@@ -27,15 +25,7 @@ class ProductCategory extends Model
     /**
      * @var array
      */
-    protected $fillable = ['unitId', 'name', 'description', 'status', 'created_at', 'uptadet_at'];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function productUnit()
-    {
-        return $this->belongsTo('App\ProductUnit', 'unitId');
-    }
+    protected $fillable = ['name', 'description', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

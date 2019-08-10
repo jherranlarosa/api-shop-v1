@@ -1,32 +1,32 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Sale;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
+ * @property int $saleId
  * @property int $productId
- * @property string $name
- * @property string $description
  * @property boolean $status
  * @property string $created_at
- * @property string $uptadet_at
+ * @property string $updated_at
  * @property Product $product
+ * @property Sale $sale
  */
-class ProductComentary extends Model
+class SaleDetail extends Model
 {
     /**
      * The table associated with the model.
      * 
      * @var string
      */
-    protected $table = 'product_comentary';
+    protected $table = 'sale_detail';
 
     /**
      * @var array
      */
-    protected $fillable = ['productId', 'name', 'description', 'status', 'created_at', 'uptadet_at'];
+    protected $fillable = ['saleId', 'productId', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -34,5 +34,13 @@ class ProductComentary extends Model
     public function product()
     {
         return $this->belongsTo('App\Product', 'productId');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function sale()
+    {
+        return $this->belongsTo('App\Sale', 'saleId');
     }
 }

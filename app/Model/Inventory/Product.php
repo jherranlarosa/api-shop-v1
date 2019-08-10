@@ -1,20 +1,23 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Inventory;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
+ * @property int $unitId
  * @property int $categoryId
  * @property string $name
  * @property string $description
  * @property boolean $status
  * @property string $created_at
- * @property string $uptadet_at
+ * @property string $updated_at
  * @property ProductCategory $productCategory
+ * @property ProductUnit $productUnit
  * @property ProductComentary[] $productComentaries
  * @property ProductImage[] $productImages
+ * @property SaleDetail[] $saleDetails
  */
 class Product extends Model
 {
@@ -28,7 +31,7 @@ class Product extends Model
     /**
      * @var array
      */
-    protected $fillable = ['categoryId', 'name', 'description', 'status', 'created_at', 'uptadet_at'];
+    protected $fillable = ['unitId', 'categoryId', 'name', 'description', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -36,6 +39,14 @@ class Product extends Model
     public function productCategory()
     {
         return $this->belongsTo('App\ProductCategory', 'categoryId');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function productUnit()
+    {
+        return $this->belongsTo('App\ProductUnit', 'unitId');
     }
 
     /**
@@ -52,5 +63,13 @@ class Product extends Model
     public function productImages()
     {
         return $this->hasMany('App\ProductImage', 'productId');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function saleDetails()
+    {
+        return $this->hasMany('App\SaleDetail', 'productId');
     }
 }

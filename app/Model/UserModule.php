@@ -10,28 +10,28 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property boolean $status
  * @property string $created_at
- * @property string $uptadet_at
- * @property ProductCategory[] $productCategories
+ * @property string $updated_at
+ * @property UserModuleRol[] $userModuleRols
  */
-class ProductUnit extends Model
+class UserModule extends Model
 {
     /**
      * The table associated with the model.
      * 
      * @var string
      */
-    protected $table = 'product_unit';
+    protected $table = 'user_module';
 
     /**
      * @var array
      */
-    protected $fillable = ['name', 'description', 'status', 'created_at', 'uptadet_at'];
+    protected $fillable = ['name', 'description', 'status', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function productCategories()
+    public function userModuleRols()
     {
-        return $this->hasMany('App\ProductCategory', 'unitId');
+        return $this->hasMany('App\UserModuleRol', 'moduleId');
     }
 }

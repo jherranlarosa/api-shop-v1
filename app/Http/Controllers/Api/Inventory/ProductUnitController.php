@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Api\Inventory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController as BaseController;
-use App\Model\ProductUnit;
+use App\Model\Inventory\ProductUnit;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
@@ -27,7 +27,7 @@ class ProductUnitController extends BaseController
 
     public function listProductUnit()
     {
-        $productUnit=ProductUnit::all()->where('status',1);
+        $productUnit=ProductUnit::all();
         return $this->sendResponse($productUnit, 'Loaded List Successfully :)');
     }
 
