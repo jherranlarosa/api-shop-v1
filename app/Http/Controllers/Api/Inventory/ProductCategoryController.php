@@ -27,7 +27,7 @@ class ProductCategoryController extends BaseController
 
     public function listProductCategory()
     {
-        $productCategory=ProductCategory::all();
+        $productCategory=ProductCategory::select('*')->where('status',1)->get();
         return $this->sendResponse($productCategory, 'Loaded List Category Successfully :)');
     }
 

@@ -27,7 +27,7 @@ class ProductUnitController extends BaseController
 
     public function listProductUnit()
     {
-        $productUnit=ProductUnit::all();
+        $productUnit=ProductUnit::select('*')->where('status',1)->get();
         return $this->sendResponse($productUnit, 'Loaded List Successfully :)');
     }
 
