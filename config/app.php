@@ -161,7 +161,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -170,12 +169,25 @@ return [
         /*
          * Application Service Providers...
          */
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+        BaoPham\DynamoDb\DynamoDbServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
+        Aws\Laravel\AwsServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
+        Dacastro4\LaravelGmail\LaravelGmailServiceProvider::class,
+
+        App\Providers\FileAWSServiceProvider::class,
+
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
+
+        Eyewitness\Eye\EyeServiceProvider::class,
     ],
 
     /*
@@ -192,7 +204,6 @@ return [
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
-        'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
@@ -222,10 +233,16 @@ return [
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
-        'Str' => Illuminate\Support\Str::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'ResponseCode' => App\Constant\ResponseCode::class,
+        'StatusModel' => App\Constant\StatusModel::class,
+        'AWS' => Aws\Laravel\AwsFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'FileAWS' => App\Helpers\File\FileHelper::class,
+        'Moloquent'       => Jenssegers\Mongodb\Eloquent\Model::class,
+        'LaravelGmail' => Dacastro4\LaravelGmail\Facade\LaravelGmail::class,
 
     ],
 

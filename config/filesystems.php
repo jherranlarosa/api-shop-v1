@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' => env('FILESYSTEM_DRIVER', 's3'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,6 +48,15 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'windowd' => [
+            'driver' => 'local',
+            'root' => 'D://bkp/prueba',
+        ],
+        'ubuntuhome' => [
+            'driver' => 'local',
+            'root' => '/home/jack/filesAssociation/VIVO',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -59,8 +68,8 @@ return [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
+            'region' => 'us-west-2',
+            'bucket' => 'bifrost-tdp',
             'url' => env('AWS_URL'),
         ],
 
