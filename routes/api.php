@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 
 
-Route::post('pepemaria', 'Api\RegisterController@registerSS');
+Route::post('registerUser', 'Api\RegisterController@registerUser');
 /*
 |--------------------------------------------------------------------------
 | API Routes

@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController as BaseController;
-use App\User;
+use App\Model\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
@@ -18,7 +18,7 @@ class RegisterController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function registerSS(Request $request)
+    public function registerUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
