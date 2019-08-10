@@ -28,7 +28,7 @@ class ProductUnitController extends BaseController
     public function listProductUnit()
     {
         $productUnit=ProductUnit::all()->where('status',1);
-        return $this->sendResponse($productUnit, 'Unit Product Ready! :)');
+        return $this->sendResponse($productUnit, 'Loaded List Successfully :)');
     }
 
     public function updateProductUnit(Request $request)
@@ -37,7 +37,7 @@ class ProductUnitController extends BaseController
         $productUnit->name=$request->name;        
         $productUnit->description=$request->description;     
         $productUnit->save();      
-        return $this->sendResponse($productUnit, 'Unit Product create !! :)');
+        return $this->sendResponse($productUnit, 'Unit of Measure Updated Successfully !! :)');
     }
 
     public function deleteProductUnit(Request $request)
@@ -45,6 +45,6 @@ class ProductUnitController extends BaseController
         $productUnit =ProductUnit::find($request->id);
         $productUnit->status=0;        
         $productUnit->save();        
-        return $this->sendResponse($productUnit, 'Unit Product delete !! :)');
+        return $this->sendResponse($productUnit, 'Unit of Measure Removed Successfully !! :)');
     }
 }
