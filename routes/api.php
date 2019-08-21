@@ -20,4 +20,10 @@ Route::post('createProductUnit', 'Api\Inventory\ProductUnitController@createProd
 Route::post('updateProductUnit', 'Api\Inventory\ProductUnitController@updateProductUnit');
 Route::post('deleteProductUnit', 'Api\Inventory\ProductUnitController@deleteProductUnit');
 
+Route::get('listUserModule', 'Api\Inventory\UserModuleController@listUserModule');
+Route::post('createUserModule', 'Api\Inventory\UserModuleController@createUserModule');
+Route::post('updateUserModule', 'Api\Inventory\UserModuleController@updateUserModule');
+Route::post('deleteUserModule', 'Api\Inventory\UserModuleController@deleteUserModule');
+
+
 Route::post('createProductImage', 'Api\Inventory\ProductController@createProductImage');
