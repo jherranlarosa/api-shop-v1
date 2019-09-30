@@ -13,11 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\pullerka',
-        'App\Console\Commands\fillvno',
-        'App\Console\Commands\fillData',
-        'App\Console\Commands\sendEmail',
-        'App\Console\Commands\readAssociation',
+        //
     ];
 
     /**
@@ -28,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('token:vivo')->cron('0 0 0 1/1 *');
+        // $schedule->command('inspire')
+        //          ->hourly();
     }
 
     /**

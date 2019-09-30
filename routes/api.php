@@ -1,29 +1,18 @@
 <?php
 
 use Illuminate\Http\Request;
-Route::post('registerUser', 'Api\RegisterController@registerUser');
 
-Route::get('listProduct', 'Api\Inventory\ProductController@listProduct');
-Route::post('createProduct', 'Api\Inventory\ProductController@createProduct');
-Route::post('updateProduct', 'Api\Inventory\ProductController@updateProduct');
-Route::post('deleteProduct', 'Api\Inventory\ProductController@deleteProduct');
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
 
-
-
-Route::get('listProductCategory', 'Api\Inventory\ProductCategoryController@listProductCategory');
-Route::post('createProductCategory', 'Api\Inventory\ProductCategoryController@createProductCategory');
-Route::post('updateProductCategory', 'Api\Inventory\ProductCategoryController@updateProductCategory');
-Route::post('deleteProductCategory', 'Api\Inventory\ProductCategoryController@deleteProductCategory');
-
-Route::get('listProductUnit', 'Api\Inventory\ProductUnitController@listProductUnit');
-Route::post('createProductUnit', 'Api\Inventory\ProductUnitController@createProductUnit');
-Route::post('updateProductUnit', 'Api\Inventory\ProductUnitController@updateProductUnit');
-Route::post('deleteProductUnit', 'Api\Inventory\ProductUnitController@deleteProductUnit');
-
-Route::get('listUserModule', 'Api\Inventory\UserModuleController@listUserModule');
-Route::post('createUserModule', 'Api\Inventory\UserModuleController@createUserModule');
-Route::post('updateUserModule', 'Api\Inventory\UserModuleController@updateUserModule');
-Route::post('deleteUserModule', 'Api\Inventory\UserModuleController@deleteUserModule');
-
-
-Route::post('createProductImage', 'Api\Inventory\ProductController@createProductImage');
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});

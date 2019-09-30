@@ -1,98 +1,77 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+">
         <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+    <div class="container" id="app">
+        <h2  class="text-center text-info">Vue Js Laravel CRUD</h2><hr/>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="hidden" name="id" v-model="product.id">
+                        <input v-model="product.name" type="text" class="form-control" name="name" id="name" placeholder="Enter Product Name">
+                        <span class="alert-danger" v-if="errors.name">@{{ errors.name }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Descriptiom</label>
+                        <input v-model="product.desc" type="text" class="form-control" name="desc" id="desc" placeholder="Enter Product Description">
+                        <span class="alert-danger" v-if="errors.desc">@{{ errors.desc }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Price</label>
+                        <input v-model="product.price" type="number" class="form-control" name="price" id="price" placeholder="Enter Product PRice">
+                        <span class="alert-danger" v-if="errors.price">@{{ errors.price }}</span>
+                    </div>
+                    <button @click.prevent = "add_product()" type="submit" class="btn btn-primary" v-if="edit_true">Add Product</button>
+                    <button  @click.prevent = "update_product()" type="submit" class="btn btn-primary" v-else>Update Product</button>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+                </form>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-hover" width="100%">
+                    <thead>
+                    <tr>
+                        <th width="10%">SL</th>
+                        <th width="20%">Name</th>
+                        <th width="40%">Description</th>
+                        <th width="10%">Price</th>
+                        <th width="20%">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                    <tr v-for="(product,key,index) in products">
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                        <td>@{{ key+1 }}</td>
+                        <td>@{{ product.name }}</td>
+                        <td>@{{ product.desc }}</td>
+                        <td>$@{{product.price}}</td>
+                        <td>
+                            {{--<a href="{{url('/edit-product/')}} ">Edit </a>--}}
+                            <button @click.prevent = "edit_product(product.id)" ><i class="fa fa-pencil-square-o"></i></button>
+                            <button @click.prevent = "delete_product(product.id,index)"><i class="fa fa-trash"></i></button>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
+    <script src="{{asset('/js/app.js')}}"></script>
     </body>
 </html>
+
+<ul>
+    <li></li>
+</ul>

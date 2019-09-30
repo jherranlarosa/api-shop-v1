@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/debug-sentry', function () {
-    throw new Exception('My first Sentry error!');
-});
+Route::post('/save-post','PostController@save_post');
+Route::post('/update-post','PostController@update_post');
+Route::get('/get-product','PostController@get_product');
+Route::get('/del-product/{id}','PostController@del_product');
+Route::get('/edit-product/{id}','PostController@edit_product');
